@@ -3,7 +3,6 @@ pub mod compression;
 pub mod ai;
 pub mod security;
 pub mod automation;
-pub mod utils;
 
 pub use anyhow::Result;
 

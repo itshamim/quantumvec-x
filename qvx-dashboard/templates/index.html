@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QVX Dashboard</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #38bdf8; font-family: 'Courier New', Courier, monospace; }
+        .stat-card { border: 1px solid #1e293b; background: #1e293b; padding: 1.5rem; border-radius: 0.5rem; }
+    </style>
+</head>
+<body class="p-8">
+    <h1 class="text-4xl font-bold mb-8 border-b border-sky-500 pb-2">QUANTUMVEC-X v2.0 ULTRA</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="stat-card">
+            <h2 class="text-sm text-sky-400 uppercase">Compression Ratio</h2>
+            <p class="text-3xl font-bold">{{ stats.compression_ratio }}</p>
+        </div>
+        <div class="stat-card">
+            <h2 class="text-sm text-sky-400 uppercase">Total Data</h2>
+            <p class="text-3xl font-bold">{{ stats.total_data_processed }}</p>
+        </div>
+        <div class="stat-card">
+            <h2 class="text-sm text-sky-400 uppercase">RAM Usage</h2>
+            <p class="text-3xl font-bold">{{ stats.memory_usage }}</p>
+        </div>
+    </div>
+
+    <div class="stat-card mb-8">
+        <h2 class="text-xl font-bold mb-4">System Status: <span class="text-green-400">{{ stats.status }}</span></h2>
+        <button hx-get="/api/stats" hx-target="#stats-json" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 transition">Refresh Metrics</button>
+        <pre id="stats-json" class="mt-4 bg-black p-4 rounded text-green-500"></pre>
+    </div>
+
+    <footer class="text-xs text-sky-600 mt-12">
+        © 2026 Shamim FBL Strategy | QuantumVec-X v2.0 Autopilot
+    </footer>
+</body>
+</html>
